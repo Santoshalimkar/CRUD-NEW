@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Login from './Components/Login'
+import {BrowserRouter,Route,Routes} from "react-router-dom"
+import "./index.css"
+import Home from './Components/Home'
+import UpdateDetails from './Components/UpdateDetails'
+import Viewdetails from './Components/Viewdetails'
+import AddDetails from './Components/AddDetails'
+import Viewone from './Components/Viewone'
+import Edit from './Components/Edit'
+import BottomNav from './Components/Bottomnav'
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Login/>}/>
+        <Route path='/Home' element={<Home/>}/>
+        <Route path='/Update' element={[<UpdateDetails/>,<BottomNav/>]}/>
+        <Route path='/View' element={[<Viewdetails/>,<BottomNav/>]}/>
+        <Route path='/Viewone/:id' element={[<Viewone/>,<BottomNav/>]}/>
+        <Route path='/Edit/:id' element={[<Edit/>,<BottomNav/>]}/>
+        <Route path='/Add' element={[<AddDetails/>,<BottomNav/>]}>
+
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
